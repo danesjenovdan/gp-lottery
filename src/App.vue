@@ -1,28 +1,67 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <transition name="fade" @after-leave="afterSplashLeave">
+      <splash-logo v-if="showSplash" />
+    </transition>
+    <transition name="fade">
+      <small-logo v-if="!showSplash" />
+    </transition>
+    <transition name="fade">
+      <scratch-card v-if="showContent" />
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import SplashLogo from '@/components/SplashLogo.vue';
+import SmallLogo from '@/components/SmallLogo.vue';
+import ScratchCard from '@/components/ScratchCard.vue';
 
 export default {
-  name: "app",
+  name: 'app',
   components: {
-    HelloWorld
-  }
+    SplashLogo,
+    SmallLogo,
+    ScratchCard,
+  },
+  data() {
+    return {
+      showSplash: true,
+      showContent: false,
+    };
+  },
+  mounted() {
+    setTimeout(() => {
+      this.showSplash = false;
+    }, 2000);
+  },
+  methods: {
+    afterSplashLeave() {
+      this.showContent = true;
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #f8ed43;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>
