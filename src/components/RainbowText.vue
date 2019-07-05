@@ -17,11 +17,6 @@ export default {
 .rainbow-text-shadow {
   position: relative;
   z-index: 0;
-  font-size: 4rem;
-  font-family: Montserrat, sans-serif;
-  font-weight: 900;
-  font-style: italic;
-  letter-spacing: 6.3px;
 
   &::after {
     content: attr(data-text);
@@ -40,6 +35,13 @@ export default {
     left: 4px;
     top: 4px;
     z-index: -1;
+    transition: opacity 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+
+    @at-root {
+      body.desaturated & {
+        opacity: 0;
+      }
+    }
   }
 }
 </style>
