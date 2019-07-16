@@ -1,5 +1,6 @@
 <template>
   <div class="scratch-card-wrapper">
+    <div class="spacerx"></div>
     <div class="scratch-card-container">
       <div class="scratch-card" ref="scratchCard">
         <scratch-card
@@ -19,13 +20,32 @@
               You got
               <span>PNEUMONIA</span>
             </h2>
-            <div class="icon"></div>
-            <div>
-              <button>I want to know more</button>
-            </div>
+            <template v-if="!showMore">
+              <div class="icon"></div>
+              <div>
+                <button @click="onMoreClick">I want to know more</button>
+              </div>
+            </template>
+            <template v-else>
+              <p class="more-text">
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate quae quo in
+                dolorem est neque repellendus tempore incidunt unde ipsa, voluptas deserunt. Qui
+                corporis et, sunt voluptatum quos dolorum eos. Lorem ipsum dolor sit, amet
+                consectetur adipisicing elit. Accusantium, sunt dolorum quam iusto ducimus commodi
+                illo natus quaerat odit excepturi officiis illum possimus provident, saepe non
+                nesciunt beatae porro quas! Lorem ipsum dolor, sit amet consectetur adipisicing
+                elit. Debitis quod fugiat cum quidem maxime est modi accusantium officia doloribus
+                ab recusandae ea inventore nostrum qui, atque porro aliquid veritatis labore.
+              </p>
+            </template>
           </div>
         </scratch-card>
       </div>
+    </div>
+    <div class="spacer">
+      <transition name="fade">
+        <retry-button v-if="scratched" text="SCRATCH ANOTHER" @click.native="onRetryClick" />
+      </transition>
     </div>
   </div>
 </template>
@@ -34,6 +54,7 @@
 import debounce from 'lodash-es/debounce.js';
 import ScratchCard from 'vue-scratchcard/src/ScratchCard.vue';
 import RainbowText from '@/components/RainbowText.vue';
+import RetryButton from '@/components/RetryButton.vue';
 import resizeMixin from '@/mixins/resize.js';
 import bus from '@/event-bus.js';
 
@@ -41,6 +62,7 @@ export default {
   components: {
     ScratchCard,
     RainbowText,
+    RetryButton,
   },
   mixins: [resizeMixin],
   data() {
@@ -50,6 +72,8 @@ export default {
       cardHeight: 0,
       finishPercent: 60,
       pageWidth: 0,
+      scratched: false,
+      showMore: false,
     };
   },
   methods: {
@@ -61,6 +85,16 @@ export default {
     }, 150),
     onScratchComplete() {
       bus.$emit('desaturate', true);
+      this.scratched = true;
+    },
+    onRetryClick() {
+      bus.$emit('desaturate', false);
+      this.scratched = false;
+      this.renderCount++;
+    },
+    onMoreClick() {
+      console.log('more');
+      this.showMore = true;
     },
   },
   computed: {
@@ -74,9 +108,11 @@ export default {
 
 <style lang="scss" scoped>
 .scratch-card-wrapper {
-  width: 55.6%;
-  margin: 6.66%;
+  width: 50%;
+  margin: 0 6.66%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   position: absolute;
   left: 0;
@@ -142,6 +178,9 @@ export default {
       padding: 2vw;
       text-align: center;
       user-select: none;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
 
       h1 {
         font-family: Montserrat, sans-serif;
@@ -192,7 +231,19 @@ export default {
           }
         }
       }
+
+      .more-text {
+        font-family: Montserrat, sans-serif;
+        font-size: 1.75em;
+        line-height: 1.4;
+        overflow-y: scroll;
+        padding-bottom: 1em;
+      }
     }
+  }
+
+  .spacer {
+    height: 5vw;
   }
 }
 </style>

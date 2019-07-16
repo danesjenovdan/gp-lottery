@@ -1,41 +1,36 @@
 <template>
   <div id="app">
-    <transition name="fade" @after-leave="afterSplashLeave">
-      <splash-logo v-if="showSplash" />
+    <transition name="slide-from-right" @after-enter="afterLogoEnter">
+      <lottery-logo v-if="showLogo" :in-corner="showLogoInCorner" />
     </transition>
     <transition name="fade">
-      <small-logo v-if="!showSplash" />
-    </transition>
-    <transition name="fade">
-      <scratch-card v-if="showContent" />
+      <scratch-card v-if="showScratchCard" />
     </transition>
   </div>
 </template>
 
 <script>
-import SplashLogo from '@/components/SplashLogo.vue';
-import SmallLogo from '@/components/SmallLogo.vue';
-import ScratchCard from '@/components/ScratchCard.vue';
 import bus from '@/event-bus.js';
+import LotteryLogo from '@/components/LotteryLogo.vue';
+import ScratchCard from '@/components/ScratchCard.vue';
 
 export default {
   name: 'app',
   components: {
-    SplashLogo,
-    SmallLogo,
+    LotteryLogo,
     ScratchCard,
   },
   data() {
     return {
-      showSplash: true,
-      showContent: false,
-      desaturated: false,
+      showLogo: false,
+      showLogoInCorner: false,
+      showScratchCard: false,
     };
   },
   mounted() {
     setTimeout(() => {
-      this.showSplash = false;
-    }, 2000);
+      this.showLogo = true;
+    }, 200);
 
     bus.$on('desaturate', this.onDesaturate);
   },
@@ -43,9 +38,6 @@ export default {
     bus.$off('desaturate', this.onDesaturate);
   },
   methods: {
-    afterSplashLeave() {
-      this.showContent = true;
-    },
     onDesaturate(data) {
       if (typeof window !== 'undefined' && document.body) {
         if (data) {
@@ -54,6 +46,14 @@ export default {
           document.body.classList.remove('desaturated');
         }
       }
+    },
+    afterLogoEnter() {
+      setTimeout(() => {
+        this.showLogoInCorner = true;
+      }, 1000);
+      setTimeout(() => {
+        this.showScratchCard = true;
+      }, 2000);
     },
   },
 };
@@ -65,6 +65,8 @@ body {
   margin: 0;
   padding: 0;
   height: 100%;
+  overscroll-behavior: none;
+  overflow: hidden;
 }
 
 body {
@@ -76,6 +78,15 @@ body.desaturated {
   background-color: #6a766a;
 }
 
+#app {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  bottom: 1px;
+  left: 0;
+  right: 0;
+}
+
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
@@ -84,5 +95,15 @@ body.desaturated {
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
+}
+
+.slide-from-right-enter-active,
+.slide-from-right-leave-active {
+  transition: transform 1.5s ease;
+}
+
+.slide-from-right-enter,
+.slide-from-right-leave-to {
+  transform: translateX(5000px) translateY(2500px);
 }
 </style>
