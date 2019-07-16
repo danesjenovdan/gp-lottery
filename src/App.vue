@@ -6,6 +6,9 @@
     <transition name="fade">
       <scratch-card v-if="showScratchCard" />
     </transition>
+    <transition name="fade">
+      <call-to-action v-if="showScratchCard" />
+    </transition>
   </div>
 </template>
 
@@ -13,12 +16,14 @@
 import bus from '@/event-bus.js';
 import LotteryLogo from '@/components/LotteryLogo.vue';
 import ScratchCard from '@/components/ScratchCard.vue';
+import CallToAction from '@/components/CallToAction.vue';
 
 export default {
   name: 'app',
   components: {
     LotteryLogo,
     ScratchCard,
+    CallToAction,
   },
   data() {
     return {
@@ -85,6 +90,10 @@ body.desaturated {
   bottom: 1px;
   left: 0;
   right: 0;
+}
+
+button {
+  cursor: pointer;
 }
 
 .fade-enter-active,

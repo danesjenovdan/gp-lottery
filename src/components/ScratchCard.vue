@@ -1,6 +1,6 @@
 <template>
   <div class="scratch-card-wrapper">
-    <div class="spacerx"></div>
+    <div class="spacer-top"></div>
     <div class="scratch-card-container">
       <div class="scratch-card" ref="scratchCard">
         <scratch-card
@@ -109,7 +109,7 @@ export default {
 <style lang="scss" scoped>
 .scratch-card-wrapper {
   width: 50%;
-  margin: 0 6.66%;
+  margin: 0 5%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
