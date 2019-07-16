@@ -18,7 +18,20 @@
       </div>
       <div class="action-socials" :style="{ fontSize }">
         <hr />
-        <div>yxo</div>
+        <div class="action-socials-content">
+          <div class="warn-text">
+            WARN YOUR
+            <br />FRIENDS!
+          </div>
+          <div class="buttons">
+            <button>fb</button>
+            <button>tw</button>
+            <button>ma</button>
+            <div class="input">
+              <input type="text" value="http://gps.si/wat" />
+            </div>
+          </div>
+        </div>
         <hr />
       </div>
     </div>
@@ -88,12 +101,65 @@ export default {
       flex-direction: column;
 
       hr {
-        border-top: 1px solid #fa71c6;
+        border-top: 2px solid #fa71c6;
         height: 0;
         margin: 1.5em 0;
 
         &:last-child {
           margin-bottom: 0;
+        }
+      }
+
+      .action-socials-content {
+        display: flex;
+
+        .warn-text {
+          font-family: Montserrat, sans-serif;
+          font-weight: 900;
+          font-size: 1.5em;
+          font-style: italic;
+          line-height: 1;
+          flex-shrink: 0;
+          margin-right: 0.5em;
+        }
+
+        .buttons {
+          height: 3em;
+          display: flex;
+          font-family: Montserrat, sans-serif;
+          flex: 1;
+
+          button {
+            background: #fff;
+            border: 0;
+            color: #fa71c6;
+            flex-basis: 3em;
+            flex-shrink: 0;
+            flex-grow: 0;
+            font-family: inherit;
+            font-size: inherit;
+            margin-right: 0.5em;
+          }
+
+          .input {
+            flex-basis: 3em;
+            flex-shrink: 0;
+            flex-grow: 1;
+
+            input {
+              border: 3px solid #fa71c6;
+              background: transparent;
+              font-family: inherit;
+              font-size: inherit;
+              font-weight: 700;
+              font-style: italic;
+              padding: 0 1em;
+              width: 100%;
+              height: 100%;
+              text-align: center;
+              font-size: 1.15em;
+            }
+          }
         }
       }
     }
