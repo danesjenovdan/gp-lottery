@@ -65,13 +65,18 @@ export default {
     RetryButton,
   },
   mixins: [resizeMixin],
+  props: {
+    pageWidth: {
+      type: Number,
+      required: true,
+    },
+  },
   data() {
     return {
       renderCount: 0,
       cardWidth: 0,
       cardHeight: 0,
       finishPercent: 60,
-      pageWidth: 0,
       scratched: false,
       showMore: false,
     };
@@ -81,7 +86,6 @@ export default {
       this.renderCount++;
       this.cardWidth = this.$refs.scratchCard.clientWidth;
       this.cardHeight = this.$refs.scratchCard.clientHeight;
-      this.pageWidth = window.innerWidth;
     }, 150),
     onScratchComplete() {
       bus.$emit('show-cta', true);

@@ -40,30 +40,23 @@
 </template>
 
 <script>
-import debounce from 'lodash-es/debounce.js';
-import resizeMixin from '@/mixins/resize.js';
 import CtaButton from '@/components/CtaButton.vue';
 
 export default {
   components: {
     CtaButton,
   },
-  mixins: [resizeMixin],
-  data() {
-    return {
-      pageWidth: 0,
-    };
+  props: {
+    pageWidth: {
+      type: Number,
+      required: true,
+    },
   },
   computed: {
     fontSize() {
       const size = (this.pageWidth / 1920) * 16;
       return `${size}px`;
     },
-  },
-  methods: {
-    onResize: debounce(function() {
-      this.pageWidth = window.innerWidth;
-    }, 150),
   },
 };
 </script>

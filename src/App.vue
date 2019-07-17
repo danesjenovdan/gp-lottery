@@ -4,16 +4,18 @@
       <lottery-logo v-if="showLogo" :in-corner="showLogoInCorner" />
     </transition>
     <transition name="fade">
-      <scratch-card v-if="showScratchCard" />
+      <scratch-card v-if="showScratchCard" :page-width="pageWidth" />
     </transition>
     <transition name="fade">
-      <call-to-action v-if="showCallToAction" />
+      <call-to-action v-if="showCallToAction" :page-width="pageWidth" />
     </transition>
   </div>
 </template>
 
 <script>
+import debounce from 'lodash-es/debounce.js';
 import bus from '@/event-bus.js';
+import resizeMixin from '@/mixins/resize.js';
 import LotteryLogo from '@/components/LotteryLogo.vue';
 import ScratchCard from '@/components/ScratchCard.vue';
 import CallToAction from '@/components/CallToAction.vue';
@@ -25,12 +27,14 @@ export default {
     ScratchCard,
     CallToAction,
   },
+  mixins: [resizeMixin],
   data() {
     return {
       showLogo: false,
       showLogoInCorner: false,
       showScratchCard: false,
       showCallToAction: false,
+      pageWidth: 0,
     };
   },
   mounted() {
@@ -46,6 +50,9 @@ export default {
     bus.$off('desaturate', this.onDesaturate);
   },
   methods: {
+    onResize: debounce(function() {
+      this.pageWidth = window.innerWidth;
+    }, 150),
     onShowCTA(data) {
       this.showCallToAction = data;
     },
