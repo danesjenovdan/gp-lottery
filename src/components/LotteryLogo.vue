@@ -28,6 +28,8 @@ export default {
   transform-origin: top right;
 
   @media all and (orientation: portrait) {
+    background-position: left -30% bottom 30vw;
+    background-size: 130vw;
   }
 
   &.lottery-logo--in-corner {
@@ -36,6 +38,10 @@ export default {
     bottom: -100vh;
 
     @media all and (orientation: portrait) {
+      background-position: left 65% bottom -12vw;
+      bottom: -10vw;
+      transform: none;
+      background-size: 50vw;
     }
   }
 }

@@ -32,6 +32,11 @@ export default {
   overflow: hidden;
   padding: 0.5vw 0.75vw;
 
+  @media all and (orientation: portrait) {
+    font-size: 2.2vh;
+    margin-top: 2vh;
+  }
+
   .icon {
     width: 3.25vw;
     background-image: url('../assets/retry.svg');
@@ -39,6 +44,10 @@ export default {
     background-position: center;
     background-size: contain;
     margin-right: 0.75vw;
+
+    @media all and (orientation: portrait) {
+      width: 4vh;
+    }
   }
 
   .text {

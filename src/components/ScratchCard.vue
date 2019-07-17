@@ -125,6 +125,14 @@ export default {
   top: 0;
   bottom: 0;
 
+  @media all and (orientation: portrait) {
+    width: auto;
+    right: 0;
+    justify-content: flex-start;
+    margin-top: 12vw;
+    position: static;
+  }
+
   .scratch-card-container {
     display: flex;
     width: 100%;
@@ -156,6 +164,10 @@ export default {
       transition: opacity 0.5s cubic-bezier(1, 0.5, 0.8, 1);
     }
 
+    @media all and (orientation: portrait) {
+      height: 78vh;
+    }
+
     @at-root {
       body.desaturated & {
         border-color: #6a766a;
@@ -173,6 +185,12 @@ export default {
       border-radius: 2.1vw;
       background-color: #fff;
       overflow: hidden;
+
+      @media all and (orientation: portrait) {
+        margin: 2.6vh;
+        border-width: 0.7vh;
+        border-radius: 2.6vh;
+      }
 
       .scratchcard {
         width: 100% !important;
@@ -195,6 +213,10 @@ export default {
         font-size: 4em;
         letter-spacing: 0.1em;
         margin: 0.3em 0;
+
+        @media all and (orientation: portrait) {
+          margin-top: 1em;
+        }
       }
 
       h2 {
@@ -219,6 +241,10 @@ export default {
         width: 100%;
         height: 17em;
         margin: 2em 0 3em 0;
+
+        @media all and (orientation: portrait) {
+          margin-top: 10em;
+        }
       }
 
       button {
@@ -230,6 +256,10 @@ export default {
         font-weight: 700;
         font-size: 1.25em;
         transition: border-color 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+
+        @media all and (orientation: portrait) {
+          font-size: 1.75em;
+        }
 
         @at-root {
           body.desaturated & {

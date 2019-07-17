@@ -51,7 +51,11 @@ export default {
   },
   methods: {
     onResize: debounce(function() {
-      this.pageWidth = window.innerWidth;
+      if (window.innerHeight < window.innerWidth) {
+        this.pageWidth = window.innerWidth;
+      } else {
+        this.pageWidth = window.innerHeight * 1.2;
+      }
     }, 150),
     onShowCTA(data) {
       this.showCallToAction = data;
@@ -103,6 +107,7 @@ body.desaturated {
   bottom: 1px;
   left: 0;
   right: 0;
+  overflow-y: scroll;
 }
 
 button {

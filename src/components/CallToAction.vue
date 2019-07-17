@@ -74,6 +74,13 @@ export default {
   top: 0;
   bottom: 0;
 
+  @media all and (orientation: portrait) {
+    width: auto;
+    right: 0;
+    margin: 0 5vw;
+    position: static;
+  }
+
   .call-to-action-container {
     display: flex;
     flex-direction: column;
