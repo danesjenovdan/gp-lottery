@@ -39,9 +39,9 @@ export default {
   &::after {
     content: '';
     position: absolute;
-    top: 9px;
-    right: -19px;
-    width: 19px;
+    top: 0.42em;
+    right: -0.85em;
+    width: 0.85em;
     height: 100%;
     background: #fa71c6;
     transform: skewY(45deg) translateZ(-1px);
@@ -49,28 +49,28 @@ export default {
   }
 
   &::after {
-    height: 19px;
+    height: 0.85em;
     width: 100%;
-    bottom: -19px;
-    left: 10px;
+    bottom: -0.85em;
+    left: 0.45em;
     top: auto;
     right: auto;
     transform: skewX(45deg) translateZ(-1px);
   }
 
   &:active {
-    transform: translate(10px, 10px);
+    transform: translate(0.4em, 0.4em);
 
     &::before {
-      top: 4px;
-      right: -9px;
-      width: 9px;
+      top: 0.25em;
+      right: -0.45em;
+      width: 0.45em;
     }
 
     &::after {
-      bottom: -9px;
-      left: 5px;
-      height: 9px;
+      left: 0.25em;
+      bottom: -0.45em;
+      height: 0.45em;
     }
   }
 

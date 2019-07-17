@@ -7,7 +7,7 @@
       <scratch-card v-if="showScratchCard" />
     </transition>
     <transition name="fade">
-      <call-to-action v-if="showScratchCard" />
+      <call-to-action v-if="showCallToAction" />
     </transition>
   </div>
 </template>
@@ -30,6 +30,7 @@ export default {
       showLogo: false,
       showLogoInCorner: false,
       showScratchCard: false,
+      showCallToAction: false,
     };
   },
   mounted() {
@@ -37,12 +38,17 @@ export default {
       this.showLogo = true;
     }, 200);
 
+    bus.$on('show-cta', this.onShowCTA);
     bus.$on('desaturate', this.onDesaturate);
   },
   beforeDestroy() {
+    bus.$off('show-cta', this.onShowCTA);
     bus.$off('desaturate', this.onDesaturate);
   },
   methods: {
+    onShowCTA(data) {
+      this.showCallToAction = data;
+    },
     onDesaturate(data) {
       if (typeof window !== 'undefined' && document.body) {
         if (data) {

@@ -84,10 +84,12 @@ export default {
       this.pageWidth = window.innerWidth;
     }, 150),
     onScratchComplete() {
-      bus.$emit('desaturate', true);
+      bus.$emit('show-cta', true);
+      // bus.$emit('desaturate', true);
       this.scratched = true;
     },
     onRetryClick() {
+      bus.$emit('show-cta', false);
       bus.$emit('desaturate', false);
       this.scratched = false;
       this.renderCount++;
