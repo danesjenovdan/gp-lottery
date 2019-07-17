@@ -24,9 +24,9 @@
             <br />FRIENDS!
           </div>
           <div class="buttons">
-            <button>fb</button>
-            <button>tw</button>
-            <button>ma</button>
+            <button class="fb"></button>
+            <button class="tw"></button>
+            <button class="email"></button>
             <div class="input">
               <input type="text" value="http://gps.si/wat" />
             </div>
@@ -139,6 +139,21 @@ export default {
             font-family: inherit;
             font-size: inherit;
             margin-right: 0.5em;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 50% 50%;
+
+            &.email {
+              background-image: url('../assets/mail.svg');
+            }
+
+            &.fb {
+              background-image: url('../assets/fb.svg');
+            }
+
+            &.tw {
+              background-image: url('../assets/tw.svg');
+            }
           }
 
           .input {
