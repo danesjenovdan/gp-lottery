@@ -1,14 +1,19 @@
 <template>
   <div id="app">
     <transition name="slide-from-right" @after-enter="afterLogoEnter">
-      <lottery-logo v-if="showLogo" :in-corner="showLogoInCorner" />
+      <lottery-logo v-if="showLogo && !showCallToAction" :in-corner="showLogoInCorner" />
     </transition>
-    <transition name="fade">
-      <scratch-card v-if="showScratchCard" :page-width="pageWidth" />
-    </transition>
-    <!-- <transition name="fade">
-      <call-to-action v-if="showCallToAction" :page-width="pageWidth" />
-    </transition>-->
+    <div class="page-ratio">
+      <transition name="fade">
+        <scratch-card v-if="showScratchCard" :page-width="pageWidth" />
+      </transition>
+      <transition name="fade">
+        <call-to-action v-if="showCallToAction" :page-width="pageWidth" />
+      </transition>
+    </div>
+    <div class="video-container">
+      <video src="/video/12_Thick_Atmosphere_420.mp4" autoplay muted loop />
+    </div>
   </div>
 </template>
 
@@ -18,14 +23,14 @@ import bus from '@/event-bus.js';
 import resizeMixin from '@/mixins/resize.js';
 import LotteryLogo from '@/components/LotteryLogo.vue';
 import ScratchCard from '@/components/ScratchCard.vue';
-// import CallToAction from '@/components/CallToAction.vue';
+import CallToAction from '@/components/CallToAction.vue';
 
 export default {
   name: 'app',
   components: {
     LotteryLogo,
     ScratchCard,
-    // CallToAction,
+    CallToAction,
   },
   mixins: [resizeMixin],
   data() {
@@ -51,11 +56,18 @@ export default {
   },
   methods: {
     onResize: debounce(function() {
-      this.pageWidth = window.innerWidth;
+      if (window.innerHeight / window.innerWidth > 1.77) {
+        this.pageWidth = window.innerWidth * 1.77;
+      } else if (window.innerWidth / window.innerHeight > 1.77) {
+        this.pageWidth = window.innerHeight * 1.77;
+      } else {
+        this.pageWidth =
+          window.innerWidth < window.innerHeight ? window.innerHeight : window.innerWidth;
+      }
     }, 150),
-    // onShowCTA(data) {
-    //   // this.showCallToAction = data;
-    // },
+    onShowCTA(data) {
+      this.showCallToAction = data;
+    },
     onDesaturate(data) {
       if (typeof window !== 'undefined' && document.body) {
         if (data) {
@@ -79,8 +91,59 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  padding: 1em;
   height: 100%;
+  padding-top: 1px;
+}
+
+.page-ratio {
+  width: 100vw;
+  height: 56.25vw; /* 9/16 */
+  max-height: 100vh;
+  max-width: 177.78vh; /* 16/9 */
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+
+  @media all and (orientation: portrait) {
+    width: auto;
+    max-width: auto;
+    height: auto;
+    max-height: auto;
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 99;
+  pointer-events: none;
+  opacity: 0;
+  mix-blend-mode: multiply;
+
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @at-root {
+    body.desaturated & {
+      opacity: 0.6;
+    }
+  }
 }
 
 .slide-from-right-enter-active,

@@ -1,5 +1,5 @@
 <template>
-  <div class="scratch-card-wrapper">
+  <div class="scratch-card-wrapper" :style="{ fontSize }">
     <div class="spacer-top"></div>
     <div class="scratch-card-container">
       <div class="scratch-card" ref="scratchCard">
@@ -12,7 +12,7 @@
           brushUrl="/img/scratch-brush.png"
           @complete="onScratchComplete"
         >
-          <div class="scratch-content" :style="{ fontSize }">
+          <div class="scratch-content">
             <h1>
               <rainbow-text text="CONGRATS!" />
             </h1>
@@ -89,7 +89,7 @@ export default {
     }, 150),
     onScratchComplete() {
       bus.$emit('show-cta', true);
-      // bus.$emit('desaturate', true);
+      bus.$emit('desaturate', true);
       this.scratched = true;
     },
     onRetryClick() {
@@ -129,14 +129,15 @@ export default {
     width: auto;
     right: 0;
     justify-content: flex-start;
-    margin-top: 12vw;
-    position: static;
+    margin-top: 8em;
+    position: relative;
+    z-index: 2;
   }
 
   .scratch-card-container {
     display: flex;
     width: 100%;
-    height: 42.5vw;
+    height: 50em;
     border: 1px solid #f8ed43;
     box-shadow: 0 0 51px rgba(86, 6, 76, 0.35);
     background-image: linear-gradient(
@@ -165,7 +166,7 @@ export default {
     }
 
     @media all and (orientation: portrait) {
-      height: 78vh;
+      height: 78em;
     }
 
     @at-root {
@@ -180,9 +181,9 @@ export default {
 
     .scratch-card {
       flex: 1;
-      margin: 2.2vw;
-      border: 0.52vw solid #000;
-      border-radius: 2.1vw;
+      margin: 2.2em;
+      border: 0.52em solid #000;
+      border-radius: 2.1em;
       background-color: #fff;
       overflow: hidden;
 
@@ -279,7 +280,7 @@ export default {
   }
 
   .spacer {
-    height: 5vw;
+    height: 5em;
   }
 }
 </style>

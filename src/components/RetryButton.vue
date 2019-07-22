@@ -21,7 +21,7 @@ export default {
   font-family: Montserrat, sans-serif;
   font-style: italic;
   font-weight: 900;
-  font-size: 1.75vw;
+  font-size: 1.75em;
   background: transparent;
   border: none;
   text-align: left;
@@ -30,23 +30,23 @@ export default {
   justify-content: center;
   line-height: 1;
   overflow: hidden;
-  padding: 0.5vw 0.75vw;
+  padding: 0.5em 0.75em;
 
   @media all and (orientation: portrait) {
-    font-size: 2.2vh;
-    margin-top: 2vh;
+    font-size: 2.2em;
+    margin-top: 2em;
   }
 
   .icon {
-    width: 3.25vw;
+    width: 3.25em;
     background-image: url('../assets/retry.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    margin-right: 0.75vw;
+    margin-right: 0.75em;
 
     @media all and (orientation: portrait) {
-      width: 4vh;
+      width: 4em;
     }
   }
 

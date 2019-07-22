@@ -12,7 +12,7 @@
             doloremque alias.
           </em>
         </p>
-        <div>
+        <div class="action-button">
           <cta-button text="TAKE ACTION" />
         </div>
       </div>
@@ -77,8 +77,9 @@ export default {
   @media all and (orientation: portrait) {
     width: auto;
     right: 0;
-    margin: 0 5vw;
-    position: static;
+    margin: 0 5%;
+    position: relative;
+    z-index: 1;
   }
 
   .call-to-action-container {
@@ -91,21 +92,40 @@ export default {
     z-index: 1;
     // transition: border-color 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 
+    @media all and (orientation: portrait) {
+      height: auto;
+    }
+
     .action-content {
       display: flex;
       flex-direction: column;
       height: 100%;
       margin-top: 9em;
 
+      @at-root {
+        body.desaturated & {
+          color: #fff;
+        }
+      }
+
       p {
         font-family: Montserrat, sans-serif;
         font-size: 1.5em;
         line-height: 1.5;
 
+        @media all and (orientation: portrait) {
+          font-size: 2.2em;
+          text-align: center;
+        }
+
         em {
           font-weight: 700;
           font-style: italic;
         }
+      }
+
+      .action-button {
+        margin: 2em 0;
       }
     }
 
@@ -114,12 +134,19 @@ export default {
       flex-direction: column;
 
       hr {
+        border: 0;
         border-top: 2px solid #fa71c6;
         height: 0;
         margin: 1.5em 0;
 
         &:last-child {
           margin-bottom: 0;
+        }
+
+        @at-root {
+          body.desaturated & {
+            border-top-color: #212c21;
+          }
         }
       }
 
@@ -167,6 +194,12 @@ export default {
             &.tw {
               background-image: url('../assets/tw.svg');
             }
+
+            @at-root {
+              body.desaturated & {
+                color: #212c21;
+              }
+            }
           }
 
           .input {
@@ -186,6 +219,12 @@ export default {
               height: 100%;
               text-align: center;
               font-size: 1.15em;
+
+              @at-root {
+                body.desaturated & {
+                  border-color: #212c21;
+                }
+              }
             }
           }
         }

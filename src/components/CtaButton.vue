@@ -21,7 +21,7 @@ export default {
   font-family: Montserrat, sans-serif;
   font-style: italic;
   font-weight: 900;
-  font-size: 1.75vw;
+  font-size: 1.75em;
   background: #fff;
   border: none;
   text-align: left;
@@ -30,10 +30,15 @@ export default {
   justify-content: center;
   line-height: 1;
   // overflow: hidden;
-  padding: 0.75vw 1vw;
+  padding: 0.75em 1em;
   position: relative;
   transition: all 0.15s ease;
   transform-style: preserve-3d;
+
+  @media all and (orientation: portrait) {
+    font-size: 3.2em;
+    margin: 0 auto;
+  }
 
   &::before,
   &::after {
@@ -46,6 +51,12 @@ export default {
     background: #fa71c6;
     transform: skewY(45deg) translateZ(-1px);
     transition: all 0.15s ease;
+
+    @at-root {
+      body.desaturated & {
+        background: #212c21;
+      }
+    }
   }
 
   &::after {
@@ -75,12 +86,12 @@ export default {
   }
 
   .icon {
-    width: 3.25vw;
+    width: 3.25em;
     background-image: url('../assets/cta.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    margin-right: 0.75vw;
+    margin-right: 0.75em;
   }
 
   .text {
