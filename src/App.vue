@@ -12,7 +12,7 @@
       </transition>
     </div>
     <div class="video-container">
-      <video src="/video/12_Thick_Atmosphere_420.mp4" autoplay muted loop />
+      <video src="video/12_Thick_Atmosphere_420.mp4" autoplay muted loop />
     </div>
   </div>
 </template>

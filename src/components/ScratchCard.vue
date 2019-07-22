@@ -8,8 +8,8 @@
           :cardWidth="cardWidth"
           :cardHeight="cardHeight"
           :finishPercent="finishPercent"
-          imageUrl="/img/scratch-cover.png"
-          brushUrl="/img/scratch-brush.png"
+          imageUrl="img/scratch-cover.png"
+          brushUrl="img/scratch-brush.png"
           @complete="onScratchComplete"
         >
           <div class="scratch-content">
