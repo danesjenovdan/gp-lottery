@@ -15,33 +15,33 @@ export default {
 
 <style lang="scss" scoped>
 .lottery-logo {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
-  bottom: -10vw;
-  width: 100%;
+  bottom: 0;
+  left: 0;
   background-image: url('../assets/lottery-logo.png');
   background-repeat: no-repeat;
-  background-position: left 75% bottom;
-  background-size: 69vw;
-  transition: all 1.5s ease;
-  transform-origin: top right;
+  background-size: contain;
+  background-position: center center;
+  transform-origin: center;
+  transform: scale(1) translateY(15vw);
+  transition: all 1.5s;
+  transition-timing-function: ease;
 
   @media all and (orientation: portrait) {
-    background-position: left -30% bottom 30vw;
-    background-size: 130vw;
+    transform: scale(1.75) translateY(15vw);
   }
 
   &.lottery-logo--in-corner {
-    background-position: top right;
-    transform: scale(0.4) translateY(3vw) translateX(21%);
-    bottom: -100vh;
+    background-position: top 4vw center;
+    transform-origin: top;
+    transform: scale(0.4) translateX(96%);
 
     @media all and (orientation: portrait) {
-      background-position: left 65% bottom -12vw;
-      bottom: -10vw;
-      transform: none;
-      background-size: 50vw;
+      background-position: bottom center;
+      transform-origin: bottom;
+      transform: scale(1) translateY(35vw);
     }
   }
 }
