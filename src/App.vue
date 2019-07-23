@@ -129,7 +129,7 @@ export default {
   z-index: 99;
   pointer-events: none;
   opacity: 0;
-  mix-blend-mode: multiply;
+  // mix-blend-mode: multiply;
   transition: opacity 2s linear;
 
   video {
@@ -144,7 +144,7 @@ export default {
 
   @at-root {
     body.desaturated & {
-      opacity: 0.5;
+      opacity: 0.4;
     }
   }
 }
