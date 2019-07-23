@@ -35,7 +35,7 @@ export default {
     left: 4px;
     top: 4px;
     z-index: -1;
-    transition: opacity 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: opacity 2s linear;
 
     @at-root {
       body.desaturated & {

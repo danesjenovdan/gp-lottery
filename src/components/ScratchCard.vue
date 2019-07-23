@@ -150,7 +150,7 @@ export default {
     );
     position: relative;
     z-index: 1;
-    transition: border-color 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+    transition: border-color 2s linear;
 
     &::after {
       background-image: linear-gradient(100deg, #444a44 0%, #242f24 50%, #7f837f 100%);
@@ -162,7 +162,7 @@ export default {
       bottom: 0;
       left: 0;
       z-index: -1;
-      transition: opacity 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+      transition: opacity 2s linear;
     }
 
     @media all and (orientation: portrait) {
@@ -256,7 +256,7 @@ export default {
         font-style: italic;
         font-weight: 700;
         font-size: 1.25em;
-        transition: border-color 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+        transition: border-color 2s linear;
 
         @media all and (orientation: portrait) {
           font-size: 1.75em;

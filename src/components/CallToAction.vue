@@ -101,6 +101,7 @@ export default {
       flex-direction: column;
       height: 100%;
       margin-top: 9em;
+      transition: color 2s linear;
 
       @at-root {
         body.desaturated & {
@@ -138,6 +139,7 @@ export default {
         border-top: 2px solid #fa71c6;
         height: 0;
         margin: 1.5em 0;
+        transition: border-top-color 2s linear;
 
         &:last-child {
           margin-bottom: 0;
@@ -182,6 +184,7 @@ export default {
             background-repeat: no-repeat;
             background-position: center;
             background-size: 50% 50%;
+            transition: color 2s linear;
 
             &.email {
               background-image: url('../assets/mail.svg');
@@ -219,6 +222,7 @@ export default {
               height: 100%;
               text-align: center;
               font-size: 1.15em;
+              transition: border-color 2s linear;
 
               @at-root {
                 body.desaturated & {

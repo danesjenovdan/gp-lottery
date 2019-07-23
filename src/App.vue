@@ -12,7 +12,7 @@
       </transition>
     </div>
     <div class="video-container">
-      <video src="video/12_Thick_Atmosphere_420.mp4" autoplay muted loop />
+      <video src="video/12_Thick_Atmosphere_420_loop.mp4" autoplay muted loop />
     </div>
   </div>
 </template>
@@ -40,6 +40,7 @@ export default {
       showScratchCard: false,
       showCallToAction: false,
       pageWidth: 0,
+      desturateTimeout: null,
     };
   },
   mounted() {
@@ -69,12 +70,13 @@ export default {
       this.showCallToAction = data;
     },
     onDesaturate(data) {
-      if (typeof window !== 'undefined' && document.body) {
-        if (data) {
+      if (data) {
+        this.desturateTimeout = setTimeout(() => {
           document.body.classList.add('desaturated');
-        } else {
-          document.body.classList.remove('desaturated');
-        }
+        }, 3000);
+      } else {
+        clearTimeout(this.desturateTimeout);
+        document.body.classList.remove('desaturated');
       }
     },
     afterLogoEnter() {
@@ -128,6 +130,7 @@ export default {
   pointer-events: none;
   opacity: 0;
   mix-blend-mode: multiply;
+  transition: opacity 2s linear;
 
   video {
     position: absolute;
@@ -141,7 +144,7 @@ export default {
 
   @at-root {
     body.desaturated & {
-      opacity: 0.6;
+      opacity: 0.5;
     }
   }
 }
