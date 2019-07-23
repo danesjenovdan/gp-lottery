@@ -144,7 +144,7 @@ export default {
 
   @at-root {
     body.desaturated & {
-      opacity: 0.4;
+      opacity: 0.6;
     }
   }
 }
