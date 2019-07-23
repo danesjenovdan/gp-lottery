@@ -52,7 +52,7 @@
 
 <script>
 import debounce from 'lodash-es/debounce.js';
-import ScratchCard from 'vue-scratchcard/src/ScratchCard.vue';
+import ScratchCard from '@/components/vue-scratchcard/ScratchCard.vue';
 import RainbowText from '@/components/RainbowText.vue';
 import RetryButton from '@/components/RetryButton.vue';
 import resizeMixin from '@/mixins/resize.js';
