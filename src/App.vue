@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition name="slide-from-right" @after-enter="afterLogoEnter">
-      <lottery-logo v-if="showLogo && !showCallToAction" :in-corner="showLogoInCorner" />
+      <lottery-logo v-if="showLogo" :in-corner="showLogoInCorner" />
     </transition>
     <div class="page-ratio">
       <transition name="fade">
@@ -93,8 +93,10 @@ export default {
 
 <style lang="scss" scoped>
 #app {
-  height: 100%;
+  position: relative;
+  min-height: 100%;
   padding-top: 1px;
+  overflow: hidden;
 }
 
 .page-ratio {
@@ -112,9 +114,9 @@ export default {
 
   @media all and (orientation: portrait) {
     width: auto;
-    max-width: auto;
+    max-width: initial;
     height: auto;
-    max-height: auto;
+    max-height: initial;
     position: relative;
     z-index: 2;
   }

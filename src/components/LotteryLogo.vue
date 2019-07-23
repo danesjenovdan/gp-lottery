@@ -39,9 +39,16 @@ export default {
     transform: scale(0.4) translateX(96%);
 
     @media all and (orientation: portrait) {
+      position: absolute;
       background-position: bottom center;
       transform-origin: bottom;
       transform: scale(1) translateY(35vw);
+    }
+  }
+
+  @at-root {
+    body.desaturated & {
+      filter: grayscale(100%) brightness(70%) contrast(200%);
     }
   }
 }

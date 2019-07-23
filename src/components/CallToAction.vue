@@ -106,6 +106,7 @@ export default {
     margin: 0 5%;
     position: relative;
     z-index: 1;
+    margin-bottom: 4em;
   }
 
   .call-to-action-container {
