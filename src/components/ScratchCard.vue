@@ -83,7 +83,9 @@ export default {
   },
   methods: {
     onResize: debounce(function() {
-      this.renderCount++;
+      if (!this.scratched) {
+        this.renderCount++;
+      }
       this.cardWidth = this.$refs.scratchCard.clientWidth;
       this.cardHeight = this.$refs.scratchCard.clientHeight;
     }, 150),
