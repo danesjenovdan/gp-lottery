@@ -13,14 +13,14 @@
           @complete="onScratchComplete"
         >
           <div class="scratch-content">
-            <h1>
-              <rainbow-text text="CONGRATS!" />
-            </h1>
-            <h2>
-              You got
-              <span>PNEUMONIA</span>
-            </h2>
             <template v-if="!showMore">
+              <h1>
+                <rainbow-text text="CONGRATS!" />
+              </h1>
+              <h2>
+                You got
+                <span>PNEUMONIA</span>
+              </h2>
               <div class="icon"></div>
               <div>
                 <button @click="onMoreClick">I want to know more</button>
@@ -96,6 +96,7 @@ export default {
       bus.$emit('show-cta', false);
       bus.$emit('desaturate', false);
       this.scratched = false;
+      this.showMore = false;
       this.renderCount++;
     },
     onMoreClick() {
@@ -200,12 +201,13 @@ export default {
     }
 
     .scratch-content {
-      padding: 2vw;
+      padding: 3em;
       text-align: center;
       user-select: none;
       display: flex;
       flex-direction: column;
       height: 100%;
+      justify-content: center;
 
       h1 {
         font-family: Montserrat, sans-serif;
@@ -241,11 +243,7 @@ export default {
         background-size: contain;
         width: 100%;
         height: 17em;
-        margin: 2em 0 3em 0;
-
-        @media all and (orientation: portrait) {
-          margin-top: 10em;
-        }
+        margin: 3em 0;
       }
 
       button {
@@ -273,8 +271,13 @@ export default {
         font-family: Montserrat, sans-serif;
         font-size: 1.75em;
         line-height: 1.4;
-        overflow-y: scroll;
-        padding-bottom: 1em;
+        overflow-y: auto;
+        padding: 0;
+        margin: 0;
+
+        @media all and (orientation: portrait) {
+          font-size: 2.2em;
+        }
       }
     }
   }
