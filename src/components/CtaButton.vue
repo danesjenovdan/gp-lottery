@@ -50,7 +50,7 @@ export default {
     height: 100%;
     background: #fa71c6;
     transform: skewY(45deg) translateZ(-1px);
-    transition: all 0.15s ease;
+    transition: all 0.15s ease, background-color 2s linear;
 
     @at-root {
       body.desaturated & {

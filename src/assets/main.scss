@@ -23,9 +23,9 @@ body {
 
 body {
   background-color: #f8ed43;
-  transition: all 3s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 2s linear;
 }
 
 body.desaturated {
-  background-color: #6a766a !important;
+  background-color: #495049 !important;
 }
