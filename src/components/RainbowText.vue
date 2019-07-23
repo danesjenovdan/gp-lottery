@@ -15,6 +15,7 @@ export default {
 
 <style lang="scss" scoped>
 .rainbow-text-shadow {
+  display: inline-block;
   position: relative;
   z-index: 0;
 
@@ -32,8 +33,8 @@ export default {
     color: transparent;
     display: inline-block;
     position: absolute;
-    left: 4px;
-    top: 4px;
+    left: 0.06em;
+    top: 0.04em;
     z-index: -1;
     transition: opacity 2s linear;
 
