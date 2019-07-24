@@ -18,6 +18,8 @@ export default {
   display: inline-block;
   position: relative;
   z-index: 0;
+  padding-right: 0.06em;
+  color: #000;
 
   &::after {
     content: attr(data-text);

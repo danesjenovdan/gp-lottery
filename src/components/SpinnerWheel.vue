@@ -22,7 +22,15 @@
       </transition>
     </div>
     <transition name="fade">
-      <div class="card-content" v-if="spun" :style="{ fontSize }">
+      <div v-if="!isSpinning && !spun" class="title-container" :style="{ fontSize }">
+        <h1 class="title">
+          <rainbow-text text="SPIN THE WHEEL!" />
+        </h1>
+        <h2>Everyone wins!</h2>
+      </div>
+    </transition>
+    <transition name="fade">
+      <div v-if="spun" class="card-content" :style="{ fontSize }">
         <prize-content />
       </div>
     </transition>
@@ -32,12 +40,14 @@
 <script>
 import PrizeContent from '@/components/PrizeContent.vue';
 import RetryButton from '@/components/RetryButton.vue';
+import RainbowText from '@/components/RainbowText.vue';
 import bus from '@/event-bus.js';
 
 export default {
   components: {
     PrizeContent,
     RetryButton,
+    RainbowText,
   },
   props: {
     pageWidth: {
@@ -239,6 +249,35 @@ $slice-colors: (
       body.desaturated & {
         filter: grayscale(70%);
       }
+    }
+  }
+
+  .title-container {
+    position: absolute;
+    width: 70em;
+    left: 38em;
+    text-align: center;
+
+    h1.title {
+      font-family: Montserrat, sans-serif;
+      font-weight: 900;
+      font-style: italic;
+      font-size: 4em;
+      letter-spacing: 0.1em;
+      margin: 0;
+      display: inline-block;
+      font-size: 6em;
+
+      @media all and (orientation: portrait) {
+        margin-top: 1em;
+      }
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      font-size: 2.7em;
+      color: #5fa6ff;
     }
   }
 
