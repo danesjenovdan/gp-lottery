@@ -1,12 +1,12 @@
 <template>
   <div class="spinner-wheel-wrapper">
     <div :style="{ fontSize }" :class="['spinner-wheel', { 'spinner-wheel--spun': spun }]">
-      <div class="spinner">
-        <div class="spinner-list" id="wheel">
+      <div class="spinner" @click="startSpin">
+        <div class="spinner-list" :style="{ transform: `rotate(${this.startingDeg}deg)` }">
           <li v-for="i in 12" :key="`spinner-slice-${i}`" class="spinner-slice"></li>
         </div>
       </div>
-      <div class="marker" @click="onSpinComplete">
+      <div class="marker" @click="startSpin">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="26.667 5.03 89.646 50.446" fill="#2145d0">
           <path
             d="M116.313 32.012c0-12.938-10.526-23.463-23.464-23.463-12.263 0-64.125 19.047-66.182 19.944v3.52l3.387 1.477c2.057.897 50.532 21.986 62.795 21.986 12.938 0 23.464-10.526 23.464-23.464zM92.849 37.14a5.133 5.133 0 0 1-5.127-5.128c0-2.828 2.3-5.128 5.127-5.128s5.128 2.3 5.128 5.128c0 2.828-2.3 5.128-5.128 5.128z"
@@ -17,10 +17,13 @@
           />
         </svg>
       </div>
+      <transition name="fade">
+        <retry-button v-if="spun" text="SPIN AGAIN" @click.native="onRetryClick" />
+      </transition>
     </div>
     <transition name="fade">
       <div class="card-content" v-if="spun" :style="{ fontSize }">
-        <Prize-content />
+        <prize-content />
       </div>
     </transition>
   </div>
@@ -28,31 +31,13 @@
 
 <script>
 import PrizeContent from '@/components/PrizeContent.vue';
+import RetryButton from '@/components/RetryButton.vue';
 import bus from '@/event-bus.js';
 
-/*
-const spinContainer = document.getElementById('container')
-const spinBtn = document.getElementById('spin')
-const spinWheel = document.getElementById('wheel')
-
-spinBtn.addEventListener('click', (e) => {
-  const lengthOfSpin = getComputedStyle(spinWheel).getPropertyValue('--spin-time')
-  const startingDeg = Number(spinWheel.dataset.currDeg) || 500
-  const randDeg = startingDeg + Math.round(Math.random() * (3000 - 360) + 360)
-
-  spinContainer.classList.add('is-spinning')
-  spinWheel.style.transform = `rotate(${randDeg}deg)`
-
-  spinWheel.dataset.currDeg = randDeg
-
-  setTimeout(() => {
-    spinContainer.classList.remove('is-spinning')
-  }, lengthOfSpin)
-})
-*/
 export default {
   components: {
     PrizeContent,
+    RetryButton,
   },
   props: {
     pageWidth: {
@@ -62,14 +47,34 @@ export default {
   },
   data() {
     return {
+      startingDeg: 500,
+      isSpinning: false,
       spun: false,
     };
   },
   methods: {
     onSpinComplete() {
       bus.$emit('show-cta', true);
-      // bus.$emit('desaturate', true);
+      bus.$emit('desaturate', true);
       this.spun = true;
+    },
+    onRetryClick() {
+      bus.$emit('show-cta', false);
+      bus.$emit('desaturate', false);
+      this.spun = false;
+    },
+    startSpin() {
+      if (this.isSpinning || this.spun) {
+        return;
+      }
+
+      this.isSpinning = true;
+      this.startingDeg = this.startingDeg + Math.round(Math.random() * (3000 - 360) + 360);
+
+      setTimeout(() => {
+        this.isSpinning = false;
+        this.onSpinComplete();
+      }, 3000);
     },
   },
   computed: {
@@ -128,12 +133,33 @@ $slice-colors: (
 
     &.spinner-wheel--spun {
       transform: translateX(-85%);
+
+      .marker {
+        cursor: initial;
+      }
     }
 
     .spinner {
       position: relative;
       width: 100%;
       padding-bottom: 100%;
+
+      // center dot
+      &:after {
+        content: '';
+        display: block;
+        width: 27vh;
+        height: 27vh;
+        background-color: #e5e5e5;
+        position: absolute;
+        border-radius: 50%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        box-shadow: 0 0.6em 0 0 #b7b7b7;
+      }
 
       .spinner-list {
         transition: transform 3000ms ease-out;
@@ -143,23 +169,6 @@ $slice-colors: (
         overflow: hidden;
         border-radius: 50%;
         box-shadow: 0 0 3.5em rgba(86, 6, 76, 0.35);
-
-        // center dot
-        &:after {
-          content: '';
-          display: block;
-          width: 27vh;
-          height: 27vh;
-          background-color: #e5e5e5;
-          position: absolute;
-          border-radius: 50%;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          margin: auto;
-          box-shadow: 0 0.6em 0 0 #b7b7b7;
-        }
       }
 
       .spinner-slice {
@@ -203,10 +212,26 @@ $slice-colors: (
       width: 20vh;
       height: 20vh;
       transform: translateY(-50%);
+      cursor: pointer;
 
       svg {
         width: 100%;
         height: 100%;
+      }
+    }
+
+    .retry-button {
+      position: absolute;
+      top: 66%;
+      right: -5em;
+      transform: translateY(-50%);
+      text-align: center;
+      flex-direction: column;
+
+      &::v-deep .icon {
+        display: block;
+        height: 2em;
+        margin: 0 auto 0.5em;
       }
     }
   }
@@ -222,8 +247,7 @@ $slice-colors: (
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: all 0.25s cubic-bezier(1, 0.5, 0.8, 1);
-  transition-delay: 0.25s;
+  transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
 }
 
 .fade-enter,
