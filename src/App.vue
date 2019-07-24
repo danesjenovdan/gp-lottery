@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <transition name="slide-from-right" @after-enter="afterLogoEnter">
-      <lottery-logo v-if="false && showLogo" :in-corner="showLogoInCorner" />
+      <lottery-logo v-if="showLogo" :in-corner="showLogoInCorner" />
     </transition>
     <div class="page-ratio">
       <transition name="fade">
-        <spinner-wheel v-if="true || showScratchCard" :page-width="pageWidth" />
+        <spinner-wheel v-if="showScratchCard" :page-width="pageWidth" />
         <!-- <scratch-card v-if="showScratchCard" :page-width="pageWidth" /> -->
       </transition>
       <transition name="fade">
@@ -23,7 +23,7 @@ import debounce from 'lodash-es/debounce.js';
 import bus from '@/event-bus.js';
 import resizeMixin from '@/mixins/resize.js';
 import LotteryLogo from '@/components/LotteryLogo.vue';
-// import ScratchCard from '@/components/ScratchCard.vue';
+import ScratchCard from '@/components/ScratchCard.vue';
 import SpinnerWheel from '@/components/SpinnerWheel.vue';
 import CallToAction from '@/components/CallToAction.vue';
 
@@ -31,7 +31,7 @@ export default {
   name: 'app',
   components: {
     LotteryLogo,
-    // ScratchCard,
+    ScratchCard,
     SpinnerWheel,
     CallToAction,
   },

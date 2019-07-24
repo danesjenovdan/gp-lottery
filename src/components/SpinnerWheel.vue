@@ -19,12 +19,15 @@
       </div>
     </div>
     <transition name="fade">
-      <div class="card-content" v-if="spun" :style="{ fontSize }">test</div>
+      <div class="card-content" v-if="spun" :style="{ fontSize }">
+        <Prize-content />
+      </div>
     </transition>
   </div>
 </template>
 
 <script>
+import PrizeContent from '@/components/PrizeContent.vue';
 import bus from '@/event-bus.js';
 
 /*
@@ -48,6 +51,9 @@ spinBtn.addEventListener('click', (e) => {
 })
 */
 export default {
+  components: {
+    PrizeContent,
+  },
   props: {
     pageWidth: {
       type: Number,
@@ -100,7 +106,6 @@ $slice-colors: (
 );
 
 .spinner-wheel-wrapper {
-  outline: 1px solid blue;
   width: 50%;
   margin: 0 5%;
   display: flex;
@@ -117,7 +122,6 @@ $slice-colors: (
   }
 
   .spinner-wheel {
-    outline: 1px solid red;
     width: $spinner-size;
     transform: translateX(-60%);
     transition: transform 0.5s ease;

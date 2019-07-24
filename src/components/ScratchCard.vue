@@ -12,33 +12,7 @@
           brushUrl="img/scratch-brush.png"
           @complete="onScratchComplete"
         >
-          <div class="scratch-content">
-            <template v-if="!showMore">
-              <h1>
-                <rainbow-text text="CONGRATS!" />
-              </h1>
-              <h2>
-                You got
-                <span>PNEUMONIA</span>
-              </h2>
-              <div class="icon"></div>
-              <div>
-                <button @click="onMoreClick">I want to know more</button>
-              </div>
-            </template>
-            <template v-else>
-              <p class="more-text">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate quae quo in
-                dolorem est neque repellendus tempore incidunt unde ipsa, voluptas deserunt. Qui
-                corporis et, sunt voluptatum quos dolorum eos. Lorem ipsum dolor sit, amet
-                consectetur adipisicing elit. Accusantium, sunt dolorum quam iusto ducimus commodi
-                illo natus quaerat odit excepturi officiis illum possimus provident, saepe non
-                nesciunt beatae porro quas! Lorem ipsum dolor, sit amet consectetur adipisicing
-                elit. Debitis quod fugiat cum quidem maxime est modi accusantium officia doloribus
-                ab recusandae ea inventore nostrum qui, atque porro aliquid veritatis labore.
-              </p>
-            </template>
-          </div>
+          <prize-content />
         </scratch-card>
       </div>
     </div>
@@ -53,16 +27,16 @@
 <script>
 import debounce from 'lodash-es/debounce.js';
 import ScratchCard from '@/components/vue-scratchcard/ScratchCard.vue';
-import RainbowText from '@/components/RainbowText.vue';
 import RetryButton from '@/components/RetryButton.vue';
+import PrizeContent from '@/components/PrizeContent.vue';
 import resizeMixin from '@/mixins/resize.js';
 import bus from '@/event-bus.js';
 
 export default {
   components: {
     ScratchCard,
-    RainbowText,
     RetryButton,
+    PrizeContent,
   },
   mixins: [resizeMixin],
   props: {
@@ -198,87 +172,6 @@ export default {
       .scratchcard {
         width: 100% !important;
         height: 100% !important;
-      }
-    }
-
-    .scratch-content {
-      padding: 3em;
-      text-align: center;
-      user-select: none;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      justify-content: center;
-
-      h1 {
-        font-family: Montserrat, sans-serif;
-        font-weight: 900;
-        font-style: italic;
-        font-size: 4em;
-        letter-spacing: 0.1em;
-        margin: 0.3em 0;
-
-        @media all and (orientation: portrait) {
-          margin-top: 1em;
-        }
-      }
-
-      h2 {
-        font-family: Montserrat, sans-serif;
-        font-weight: 400;
-        font-style: italic;
-        font-size: 2.5em;
-        letter-spacing: 0.1em;
-        margin: 0.5em 0;
-
-        span {
-          font-size: 1.2em;
-          font-weight: 900;
-        }
-      }
-
-      .icon {
-        background-image: url('../assets/lungs.svg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-        width: 100%;
-        height: 17em;
-        margin: 3em 0;
-      }
-
-      button {
-        background: transparent;
-        border: 0.3em solid #fa71c6;
-        padding: 0.75em 1.25em;
-        font-family: Montserrat, sans-serif;
-        font-style: italic;
-        font-weight: 700;
-        font-size: 1.25em;
-        transition: border-color 2s linear;
-
-        @media all and (orientation: portrait) {
-          font-size: 1.75em;
-        }
-
-        @at-root {
-          body.desaturated & {
-            border-color: #000;
-          }
-        }
-      }
-
-      .more-text {
-        font-family: Montserrat, sans-serif;
-        font-size: 1.75em;
-        line-height: 1.4;
-        overflow-y: auto;
-        padding: 0;
-        margin: 0;
-
-        @media all and (orientation: portrait) {
-          font-size: 2.2em;
-        }
       }
     }
   }
