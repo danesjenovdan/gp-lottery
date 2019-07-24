@@ -4,13 +4,11 @@
     <div class="call-to-action-container">
       <div class="action-content" :style="{ fontSize }">
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, minima architecto? Saepe
-          eaque eligendi ipsa tempora quo.Libero, assumenda? Enim delectus cupiditate cum
-          consectetur dolor praesentium ea ad, quae dolorem error assumenda quibusdam,
-          <em>
-            at culpa esse incidunt ipsum nulla vero sapiente deserunt possimus? Autem laboriosam
-            doloremque alias.
-          </em>
+          Harmful effects of air pollution occur even at levels below air quality standards
+          considered to be safe by official institutions. Most air pollution comes from burning
+          fossil fuels such as coal to generate electricity and heat our homes.
+          <em>The best way to reduce human exposure to air pollution is to</em>
+          <em>control it at its source.</em>
         </p>
         <div class="action-button">
           <cta-button text="TAKE ACTION" />

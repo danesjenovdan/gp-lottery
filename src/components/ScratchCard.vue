@@ -52,7 +52,6 @@ export default {
       cardHeight: 0,
       finishPercent: 60,
       scratched: false,
-      showMore: false,
     };
   },
   methods: {
@@ -72,11 +71,7 @@ export default {
       bus.$emit('show-cta', false);
       bus.$emit('desaturate', false);
       this.scratched = false;
-      this.showMore = false;
       this.renderCount++;
-    },
-    onMoreClick() {
-      this.showMore = true;
     },
   },
   computed: {

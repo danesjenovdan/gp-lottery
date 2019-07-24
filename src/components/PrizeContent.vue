@@ -6,7 +6,7 @@
       </h1>
       <h2>
         You got
-        <span>PNEUMONIA</span>
+        <span v-text="randomPrize.title"></span>
       </h2>
       <div class="icon"></div>
       <div>
@@ -14,22 +14,15 @@
       </div>
     </template>
     <template v-else>
-      <p class="more-text">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate quae quo in dolorem est
-        neque repellendus tempore incidunt unde ipsa, voluptas deserunt. Qui corporis et, sunt
-        voluptatum quos dolorum eos. Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-        Accusantium, sunt dolorum quam iusto ducimus commodi illo natus quaerat odit excepturi
-        officiis illum possimus provident, saepe non nesciunt beatae porro quas! Lorem ipsum dolor,
-        sit amet consectetur adipisicing elit. Debitis quod fugiat cum quidem maxime est modi
-        accusantium officia doloribus ab recusandae ea inventore nostrum qui, atque porro aliquid
-        veritatis labore.
-      </p>
+      <p class="more-text" v-text="randomPrize.description"></p>
     </template>
   </div>
 </template>
 
 <script>
+import sample from 'lodash-es/sample.js';
 import RainbowText from '@/components/RainbowText.vue';
+import prizesJson from '@/assets/prizes.json';
 
 export default {
   components: {
@@ -38,7 +31,14 @@ export default {
   data() {
     return {
       showMore: false,
+      randomPrize: {
+        title: 'null',
+        description: 'null',
+      },
     };
+  },
+  mounted() {
+    this.randomPrize = sample(prizesJson.prizes);
   },
   methods: {
     onMoreClick() {

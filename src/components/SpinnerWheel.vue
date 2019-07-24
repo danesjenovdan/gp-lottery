@@ -129,7 +129,7 @@ $slice-colors: (
   .spinner-wheel {
     width: $spinner-size;
     transform: translateX(-60%);
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, filter 2s linear;
 
     &.spinner-wheel--spun {
       transform: translateX(-85%);
@@ -232,6 +232,12 @@ $slice-colors: (
         display: block;
         height: 2em;
         margin: 0 auto 0.5em;
+      }
+    }
+
+    @at-root {
+      body.desaturated & {
+        filter: grayscale(70%);
       }
     }
   }

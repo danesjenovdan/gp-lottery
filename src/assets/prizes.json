@@ -1,0 +1,56 @@
+{
+  "prizes": [
+    {
+      "title": "Asthma",
+      "description": "The harmful effects of dirty air begin when the pollution is inhaled. This results in breathing problems such as asthma. Coal plants contribute substantially to the formation of small particles with the size of 2.5 micrograms or less via their emissions of sulphur dioxide (SO2) and nitrous oxides (NOx), which react with ammonia to form PM2.5 in the atmosphere; but also, less so, via direct emissions into the air. For particulate matter, no safe thresholds exist.  Studies indicate that a proportion of people with asthma experience changes in pulmonary function and respiratory symptoms after periods of exposure to SO2 as short as 10 minutes."
+    },
+    {
+      "title": "Lung cancer ",
+      "description": "A 2013 assessment by WHO’s International Agency for Research on Cancer (IARC) concluded that outdoor air pollution is carcinogenic to humans, with the particulate matter component of air pollution most closely associated with increased cancer incidence, especially lung cancer.  Health impacts result from both short and long-term, repeated exposure to air pollution and in fact impacts can already occur at concentrations even lower than previously considered with a range of health impacts larger than previously thought. For particulate matter there is no safe threshold."
+    },
+    {
+      "title": "Heart diseases",
+      "description": "There is now overwhelming evidence that air pollution results in serious harm not only to the lungs, but also to the heart. It increases the risk of heart attacks as arteries narrow and muscles weaken. The effects of air pollution on the heart may include: altered cardiac autonomic function, oxidative stress, increased dysrhythmic susceptibility, altered cardiac repolarisation, increased myocardial ischemia."
+    },
+    {
+      "title": "Stroke",
+      "description": "One reason for the wide-ranging damage from air pollution is that very small particles can penetrate the lungs and be carried around the body. Strokes, dementia and reduced intelligence are all conditions affecting the brain that have been linked to air pollution."
+    },
+    {
+      "title": "Dementia",
+      "description": "One reason for the wide-ranging damage from air pollution is that very small particles can penetrate the lungs and be carried around the body. Strokes, dementia and reduced intelligence are all conditions affecting the brain that have been linked to air pollution."
+    },
+    {
+      "title": "Reduced intelligence",
+      "description": "One reason for the wide-ranging damage from air pollution is that very small particles can penetrate the lungs and be carried around the body. Strokes, dementia and reduced intelligence are all conditions affecting the brain that have been linked to air pollution."
+    },
+    {
+      "title": "Gut cancer",
+      "description": "Research links air pollution to numerous cancers, including in the bladder and the gut, where an increase in irritable bowel syndrome has also been found. An association has been observed between outdoor air pollution and increase in cancer of the urinary tract/bladder."
+    },
+    {
+      "title": "Bladder cancer",
+      "description": "Research links air pollution to numerous cancers, including in the bladder and the gut, where an increase in irritable bowel syndrome has also been found. An association has been observed between outdoor air pollution and increase in cancer of the urinary tract/bladder."
+    },
+    {
+      "title": "Childhood obesity ",
+      "description": "According to the World Health Organization, 90% of the world’s children are breathing unsafe air. Concern over the impact of toxic air on children’s health is rising as research reveals serious long-term damage to both their physical and mental health. Children are especially vulnerable as their bodies are still developing. For instance, exposure to dirty air leads to increases in childhood obesity."
+    },
+    {
+      "title": "Reduced fertility",
+      "description": "Perhaps the most disturbing impact of toxic air is the damage to reproduction and children. Fertility is reduced and miscarriages increased by exposure to air pollution. The unborn are affected, with a recent study finding pollutants in the placentas that nourish foetuses."
+    },
+    {
+      "title": "Miscarriage",
+      "description": "Perhaps the most disturbing impact of toxic air is the damage to reproduction and children. Fertility is reduced and miscarriages increased by exposure to air pollution. The unborn are affected, with a recent study finding pollutants in the placentas that nourish foetuses."
+    },
+    {
+      "title": "Low birthweight",
+      "description": "Perhaps the most disturbing impact of toxic air is the damage to reproduction and children. Children are biologically more susceptible to pollution because their bodies are still not mature. Air pollution is strongly linked to low birthweights for babies, which has lifelong consequences."
+    },
+    {
+      "title": "Infant health problems",
+      "description": "Perhaps the most disturbing impact of toxic air is the damage to reproduction and children. The unborn are affected, with a recent study finding pollutants in the placentas that nourish foetuses. Children are especially vulnerable as their bodies are still developing. Exposure to dirty air leads to stunted lungs, increases in childhood obesity, leukemia and mental health problems."
+    }
+  ]
+}
