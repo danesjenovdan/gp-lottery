@@ -102,7 +102,6 @@ export default {
       this.renderCount++;
     },
     onMoreClick() {
-      console.log('more');
       this.showMore = true;
     },
   },
@@ -142,7 +141,7 @@ export default {
     width: 100%;
     height: 50em;
     border: 1px solid #f8ed43;
-    box-shadow: 0 0 51px rgba(86, 6, 76, 0.35);
+    box-shadow: 0 0 3.5em rgba(86, 6, 76, 0.35);
     background-image: linear-gradient(
       100deg,
       rgba(95, 166, 255, 1) 0%,
