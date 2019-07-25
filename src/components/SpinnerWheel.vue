@@ -79,7 +79,7 @@ export default {
       }
 
       this.isSpinning = true;
-      this.startingDeg = this.startingDeg + Math.round(Math.random() * (3000 - 360) + 360);
+      this.startingDeg = this.startingDeg + Math.round(Math.random() * (3000 - 720) + 720);
 
       setTimeout(() => {
         this.isSpinning = false;
@@ -99,7 +99,7 @@ export default {
 <style lang="scss" scoped>
 $pi: 3.14159265358979;
 
-$spinner-size: 90vh;
+$spinner-size: 61em;
 $spinner-radius: $spinner-size / 2px;
 $spinner-circumference: $pi * $spinner-size;
 $spinner-slices: 12;
@@ -158,8 +158,8 @@ $slice-colors: (
       &:after {
         content: '';
         display: block;
-        width: 27vh;
-        height: 27vh;
+        width: 18em;
+        height: 18em;
         background-color: #e5e5e5;
         position: absolute;
         border-radius: 50%;
@@ -218,9 +218,9 @@ $slice-colors: (
     .marker {
       position: absolute;
       top: 50%;
-      right: -12vh;
-      width: 20vh;
-      height: 20vh;
+      right: -9em;
+      width: 14em;
+      height: 14em;
       transform: translateY(-50%);
       cursor: pointer;
 
