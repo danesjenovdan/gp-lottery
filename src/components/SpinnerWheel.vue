@@ -1,7 +1,7 @@
 <template>
-  <div class="spinner-wheel-wrapper">
+  <div class="spinner-wheel-wrapper" :style="{ fontSize }">
     <div :style="{ fontSize }" :class="['spinner-wheel', { 'spinner-wheel--spun': spun }]">
-      <div class="spinner" @click="startSpin">
+      <div class="spinner" @click="startSpin" @touchend="startSpin">
         <div class="spinner-list" :style="{ transform: `rotate(${this.startingDeg}deg)` }">
           <li v-for="i in 12" :key="`spinner-slice-${i}`" class="spinner-slice"></li>
         </div>
@@ -22,7 +22,10 @@
       </transition>
     </div>
     <transition name="fade">
-      <div v-if="!isSpinning && !spun" class="title-container" :style="{ fontSize }">
+      <div
+        :class="['title-container', { 'title-container--hidden': isSpinning || spun }]"
+        :style="{ fontSize }"
+      >
         <h1 class="title">
           <rainbow-text text="SPIN THE WHEEL!" />
         </h1>
@@ -133,7 +136,13 @@ $slice-colors: (
   bottom: 0;
 
   @media all and (orientation: portrait) {
-    //
+    width: auto;
+    right: 0;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-top: 28em;
+    position: relative;
+    z-index: 2;
   }
 
   .spinner-wheel {
@@ -141,8 +150,16 @@ $slice-colors: (
     transform: translateX(-60%);
     transition: transform 0.5s ease, filter 2s linear;
 
+    @media all and (orientation: portrait) {
+      transform: translateX(-60%) scale(1.2);
+    }
+
     &.spinner-wheel--spun {
       transform: translateX(-85%);
+
+      @media all and (orientation: portrait) {
+        transform: translateX(-60%) scale(1.2);
+      }
 
       .marker {
         cursor: initial;
@@ -238,6 +255,11 @@ $slice-colors: (
       text-align: center;
       flex-direction: column;
 
+      @media all and (orientation: portrait) {
+        top: 43%;
+        right: -11em;
+      }
+
       &::v-deep .icon {
         display: block;
         height: 2em;
@@ -257,6 +279,22 @@ $slice-colors: (
     width: 70em;
     left: 38em;
     text-align: center;
+    transition: opacity 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+
+    @media all and (orientation: portrait) {
+      top: -25em;
+      left: 0;
+      right: 0;
+      width: auto;
+    }
+
+    &.title-container--hidden {
+      opacity: 0;
+
+      @media all and (orientation: portrait) {
+        opacity: 1;
+      }
+    }
 
     h1.title {
       font-family: Montserrat, sans-serif;
@@ -270,6 +308,7 @@ $slice-colors: (
 
       @media all and (orientation: portrait) {
         margin-top: 1em;
+        font-size: 5em;
       }
     }
 
@@ -287,6 +326,13 @@ $slice-colors: (
     background: #fff;
     position: absolute;
     right: 0;
+
+    @media all and (orientation: portrait) {
+      position: static;
+      width: 90%;
+      height: auto;
+      margin-top: 12em;
+    }
   }
 }
 
