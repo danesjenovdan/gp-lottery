@@ -116,7 +116,7 @@ export default {
   right: 0;
   bottom: 0;
   left: 0;
-  z-index: 2;
+  // z-index: 2;
 
   @media all and (orientation: portrait) {
     width: auto;
@@ -124,7 +124,7 @@ export default {
     height: auto;
     max-height: initial;
     position: relative;
-    z-index: 2;
+    // z-index: 2;
   }
 }
 

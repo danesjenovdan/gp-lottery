@@ -103,7 +103,7 @@ export default {
     right: 0;
     margin: 0 5%;
     position: relative;
-    z-index: 1;
+    // z-index: 1;
     margin-bottom: 4em;
   }
 
@@ -113,7 +113,7 @@ export default {
     width: 100%;
     height: 42.5vw;
     position: relative;
-    z-index: 1;
+    // z-index: 1;
 
     @media all and (orientation: portrait) {
       height: auto;
@@ -125,6 +125,7 @@ export default {
       height: 100%;
       margin-top: 9em;
       transition: color 2s linear;
+      z-index: 100;
 
       @at-root {
         body.desaturated & {
@@ -150,6 +151,10 @@ export default {
 
       .action-button {
         margin: 2em 0;
+
+        @media all and (orientation: portrait) {
+          margin-bottom: 4em;
+        }
       }
     }
 
