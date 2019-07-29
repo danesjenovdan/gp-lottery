@@ -57,6 +57,9 @@ export default {
   flex-direction: column;
   height: 100%;
   justify-content: center;
+  position: relative;
+  z-index: 100;
+  color: #000;
 
   h1 {
     font-family: Montserrat, sans-serif;
@@ -103,15 +106,25 @@ export default {
     font-style: italic;
     font-weight: 700;
     font-size: 1.25em;
-    transition: border-color 2s linear;
+    transition: border-color 0.15s ease, background-color 0.25s ease;
 
     @media all and (orientation: portrait) {
       font-size: 1.75em;
     }
 
+    &:hover {
+      transition: border-color 0.15s ease;
+      border-color: #f8ed43;
+    }
+
     @at-root {
       body.desaturated & {
+        transition: border-color 2s linear, background-color 0.25s ease;
         border-color: #000;
+
+        &:hover {
+          background-color: #fff;
+        }
       }
     }
   }

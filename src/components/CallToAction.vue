@@ -155,6 +155,18 @@ export default {
         @media all and (orientation: portrait) {
           margin-bottom: 4em;
         }
+
+        button {
+          transition: box-shadow 0.25s ease;
+
+          &:focus {
+            outline: none;
+          }
+
+          &:hover {
+            box-shadow: 0 0 16px 0px rgba(255, 255, 255, 0.5);
+          }
+        }
       }
     }
 
@@ -225,7 +237,8 @@ export default {
             padding: 0.5em;
             width: 3em;
             height: 3em;
-            transition: color 2s linear;
+            transition: color 0.15s ease;
+            z-index: 100;
 
             @media all and (orientation: portrait) {
               flex-basis: 6em;
@@ -235,6 +248,10 @@ export default {
               padding: 1em;
             }
 
+            &:hover {
+              color: #f8ed43;
+            }
+
             svg {
               width: 100%;
               height: 100%;
@@ -242,7 +259,13 @@ export default {
 
             @at-root {
               body.desaturated & {
+                transition: color 2s linear, background-color 0.15s ease;
                 color: #212c21;
+                background-color: rgba(255, 255, 255, 0.5);
+
+                &:hover {
+                  background-color: #fff;
+                }
               }
             }
           }
