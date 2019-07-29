@@ -5,8 +5,8 @@
     </transition>
     <div class="page-ratio">
       <transition name="fade">
-        <spinner-wheel v-if="showScratchCard" :page-width="pageWidth" />
-        <!-- <scratch-card v-if="showScratchCard" :page-width="pageWidth" /> -->
+        <scratch-card v-if="isScratch && showScratchCard" :page-width="pageWidth" />
+        <spinner-wheel v-if="!isScratch && showScratchCard" :page-width="pageWidth" />
       </transition>
       <transition name="fade">
         <call-to-action v-if="showCallToAction" :page-width="pageWidth" />
@@ -38,6 +38,7 @@ export default {
   mixins: [resizeMixin],
   data() {
     return {
+      isScratch: false,
       showLogo: false,
       showLogoInCorner: false,
       showScratchCard: false,
@@ -47,6 +48,8 @@ export default {
     };
   },
   mounted() {
+    this.isScratch = window.location.search.indexOf('scratch') != -1;
+
     setTimeout(() => {
       this.showLogo = true;
     }, 200);
