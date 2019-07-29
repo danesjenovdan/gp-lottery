@@ -103,10 +103,10 @@ export default {
 $pi: 3.14159265358979;
 
 $spinner-size: 61em;
-$spinner-radius: $spinner-size / 2px;
+$spinner-radius: $spinner-size / 2;
 $spinner-circumference: $pi * $spinner-size;
 $spinner-slices: 12;
-$slice-size: $spinner-circumference / $spinner-slices;
+$slice-size: $spinner-circumference / $spinner-slices * 1.05;
 
 $slice-colors: (
   #a94fca,
@@ -223,7 +223,7 @@ $slice-colors: (
 
         @for $i from 1 through $spinner-slices {
           &:nth-of-type(#{$i}) {
-            transform: translateY(-50%) rotate(30deg * $i);
+            transform: translateY(-50%) rotate((360deg / $spinner-slices) * $i) perspective(10px);
             &:after {
               border-left-color: nth($slice-colors, $i);
             }
