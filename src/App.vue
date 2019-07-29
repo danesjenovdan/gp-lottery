@@ -170,6 +170,7 @@ export default {
 .fade-enter-active,
 .fade-leave-active {
   transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+  transition-delay: 150ms;
 }
 
 .fade-enter,
