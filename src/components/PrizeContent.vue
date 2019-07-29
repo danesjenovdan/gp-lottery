@@ -5,7 +5,7 @@
         <rainbow-text text="CONGRATS!" />
       </h1>
       <h2>
-        You got
+        You won:
         <span v-text="randomPrize.title"></span>
       </h2>
       <div class="icon"></div>

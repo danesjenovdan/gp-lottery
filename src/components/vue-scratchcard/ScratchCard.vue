@@ -230,6 +230,6 @@ export default {
 }
 
 .scratchcard-overlay {
-  z-index: 1;
+  z-index: 101;
 }
 </style>
