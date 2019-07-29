@@ -157,7 +157,7 @@ export default {
         }
 
         button {
-          transition: box-shadow 0.25s ease;
+          transition: all 0.15s ease, box-shadow 0.25s ease;
 
           &:focus {
             outline: none;
