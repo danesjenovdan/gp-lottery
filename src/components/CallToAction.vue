@@ -7,8 +7,10 @@
           Harmful effects of air pollution occur even at levels below air quality standards
           considered to be safe by official institutions. Most air pollution comes from burning
           fossil fuels such as coal to generate electricity and heat our homes.
-          <em>The best way to reduce human exposure to air pollution is to</em>
-          <em>control it at its source.</em>
+          <em>
+            The best way to reduce human exposure to air pollution is to control it at its source.
+            <br />
+          </em>
         </p>
         <div class="action-button">
           <cta-button text="TAKE ACTION" />
