@@ -2,6 +2,7 @@
   <div class="scratch-card-wrapper" :style="{ fontSize }">
     <div class="spacer-top"></div>
     <div class="scratch-card-container">
+      <div class="overlay"></div>
       <div class="scratch-card" ref="scratchCard">
         <scratch-card
           :key="renderCount"
@@ -120,10 +121,10 @@ export default {
       rgba(199, 0, 234, 1) 100%
     );
     position: relative;
-    z-index: 1;
+    // z-index: 1;
     transition: border-color 2s linear;
 
-    &::after {
+    .overlay {
       background-image: linear-gradient(100deg, #444a44 0%, #242f24 50%, #7f837f 100%);
       opacity: 0;
       position: absolute;
@@ -132,7 +133,7 @@ export default {
       right: 0;
       bottom: 0;
       left: 0;
-      z-index: -1;
+      // z-index: -1;
       transition: opacity 2s linear;
     }
 
@@ -144,7 +145,7 @@ export default {
       body.desaturated & {
         border-color: #6a766a;
 
-        &::after {
+        .overlay {
           opacity: 1;
         }
       }
@@ -157,6 +158,7 @@ export default {
       border-radius: 2.1em;
       background-color: #fff;
       overflow: hidden;
+      position: relative;
 
       @media all and (orientation: portrait) {
         margin: 2.6vh;
