@@ -109,18 +109,18 @@ $spinner-slices: 12;
 $slice-size: $spinner-circumference / $spinner-slices * 1.05;
 
 $slice-colors: (
-  #a94fca,
-  #ee4266,
-  #ffd23f,
-  #3bceac,
-  #2765d4,
-  #ff715b,
-  #a94fca,
-  #ee4266,
-  #ffd23f,
-  #3bceac,
-  #2765d4,
-  #ff715b
+  #ffed95,
+  #ffd24d,
+  #ffb539,
+  #fc8973,
+  #ff607a,
+  #e83eb2,
+  #b548d4,
+  #3766de,
+  #5f90ff,
+  #3cb8ff,
+  #56e9ff,
+  #d5fcff
 );
 
 .spinner-wheel-wrapper {
