@@ -18,7 +18,7 @@
         </svg>
       </div>
       <transition name="fade">
-        <retry-button v-if="spun" text="SPIN AGAIN" @click.native="onRetryClick" />
+        <retry-button v-if="spun" :text="$t('spin-again')" @click.native="onRetryClick" />
       </transition>
     </div>
     <transition name="fade">
@@ -27,9 +27,9 @@
         :style="{ fontSize }"
       >
         <h1 class="title">
-          <rainbow-text text="SPIN THE WHEEL!" />
+          <rainbow-text :text="$t('spin-the-wheel')" />
         </h1>
-        <h2>Everyone wins!</h2>
+        <h2>{{ $t('everyone-wins') }}</h2>
       </div>
     </transition>
     <transition name="fade">

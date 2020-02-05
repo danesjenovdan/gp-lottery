@@ -19,7 +19,7 @@
     </div>
     <div class="spacer">
       <transition name="fade">
-        <retry-button v-if="scratched" text="SCRATCH ANOTHER" @click.native="onRetryClick" />
+        <retry-button v-if="scratched" :text="$t('scratch-another')" @click.native="onRetryClick" />
       </transition>
     </div>
   </div>

@@ -4,16 +4,14 @@
     <div class="call-to-action-container">
       <div class="action-content" :style="{ fontSize }">
         <p>
-          Harmful effects of air pollution occur even at levels below air quality standards
-          considered to be safe by official institutions. Most air pollution comes from burning
-          fossil fuels such as coal to generate electricity and heat our homes.
+          {{ $t('call-to-action-text') }}
           <em>
-            The best way to reduce human exposure to air pollution is to control it at its source.
+            {{ $t('call-to-action-text-emphasis') }}
             <br />
           </em>
         </p>
         <div class="action-button">
-          <cta-button text="TAKE ACTION" />
+          <cta-button :text="$t('call-to-action-button')" />
         </div>
       </div>
       <div class="action-socials" :style="{ fontSize }">
@@ -21,8 +19,7 @@
         <div class="action-socials-content">
           <div class="buttons">
             <div class="warn-text">
-              WARN YOUR
-              <br />FRIENDS!
+              {{ $t('warn-your-friends') }}
             </div>
             <button class="fb">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="7 4 9 16" fill="currentColor">
@@ -214,6 +211,7 @@ export default {
             flex-shrink: 0;
             margin-right: 0.5em;
             transition: color 2s linear;
+            width: min-content;
 
             @media all and (orientation: portrait) {
               font-size: 2.5em;

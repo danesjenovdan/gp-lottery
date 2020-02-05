@@ -2,15 +2,15 @@
   <div class="prize-content">
     <template v-if="!showMore">
       <h1>
-        <rainbow-text text="CONGRATS!" />
+        <rainbow-text :text="$t('congrats')" />
       </h1>
       <h2>
-        You won:
+        {{ $t('you-won') }}
         <span v-text="randomPrize.title"></span>
       </h2>
       <div class="icon"></div>
       <div>
-        <button @click="onMoreClick">I want to know more</button>
+        <button @click="onMoreClick">{{ $t('i-want-to-know-more') }}</button>
       </div>
     </template>
     <template v-else>

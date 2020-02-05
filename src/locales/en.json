@@ -1,3 +1,13 @@
 {
-  "message": "hello i18n !!"
+  "spin-the-wheel": "SPIN THE WHEEL!",
+  "everyone-wins": "Everyone wins!",
+  "congrats": "CONGRATS!",
+  "you-won": "You won:",
+  "i-want-to-know-more": "I want to know more",
+  "call-to-action-text": "Harmful effects of air pollution occur even at levels below air quality standards considered to be safe by official institutions. Most air pollution comes from burning fossil fuels such as coal to generate electricity and heat our homes.",
+  "call-to-action-text-emphasis": "The best way to reduce human exposure to air pollution is to control it at its source.",
+  "call-to-action-button": "TAKE ACTION",
+  "warn-your-friends": "WARN YOUR FRIENDS",
+  "scratch-another": "SCRATCH ANOTHER",
+  "spin-again": "SPIN AGAIN"
 }
