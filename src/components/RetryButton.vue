@@ -31,6 +31,7 @@ export default {
   line-height: 1;
   overflow: hidden;
   padding: 0.5em 0.75em;
+  transition: filter 2s linear;
 
   @media all and (orientation: portrait) {
     font-size: 2.2em;
@@ -52,6 +53,12 @@ export default {
 
   .text {
     width: min-content;
+  }
+
+  @at-root {
+    body.desaturated & {
+      filter: invert(1);
+    }
   }
 }
 </style>
